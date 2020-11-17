@@ -95,12 +95,9 @@ function PageRouter() {
               </Paper>
             </Toolbar>
           </Grid>
-          <Grid item xs={12}>
-            <Toolbar></Toolbar>
-            <Toolbar></Toolbar>
-          </Grid>
+
           <Grid item> <Typography style={{ width: '320px' }}></Typography></Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} style={{ paddingTop: '120px' }}>
             <ContractPaper></ContractPaper>
           </Grid>
         </Grid>
