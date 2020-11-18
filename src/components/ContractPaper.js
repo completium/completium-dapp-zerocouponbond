@@ -69,21 +69,21 @@ const MainPaper = (props) => {
         The <span className={classes.keyword}>face value</span> of the bond is set to <div className={(emptyfacevalue)?classes.tag:classes.filledtag}>{facevalue}</div>.
       </Typography>
       <Typography paragraph align='justify'>
-        The <span className={classes.keyword}>present value</span> of the bond is computed by applying a discount rate of <div className={(emptydiscount)?classes.tag:classes.filledtag}>{discount}</div> to the face value (see annex 1).
+        The <span className={classes.keyword}>present value</span> of the bond is computed by applying a discount rate of <div className={(emptydiscount)?classes.tag:classes.filledtag}>{discount}</div> to the face value (see Annex 1).
       </Typography>
       <Typography paragraph align='justify'>
-        The subscriber agrees to pay the issuer the present value of the bond to activate the bond (see annex 2).
+        The subscriber agrees to pay the issuer the present value of the bond to activate the bond (see Annex 2).
       </Typography>
       <Typography paragraph align='justify'>
         The <span className={classes.keyword}>maturity date</span> of this bond is set to <div className={(emptyduration)?classes.tag:classes.filledtag}>{duration}</div> after the date of signature by both parties.
-        The bond is signed when the issuer and the subscriber have signed the bond (see annex 3).
+        The bond is signed when the issuer and the subscriber have signed the bond (see Annex 3).
       </Typography>
       <Typography paragraph align='justify'>
-        The issuer may transfer the bond to a third party, without the need for the subscriber to be notified nor give his authorization (see annex 4).
+        The issuer may transfer the bond to a third party, without the need for the subscriber to be notified nor give his authorization (see Annex 4).
       </Typography>
       <Typography paragraph align='justify'>
         The issuer agrees to pay the face value to the subscriber within a payback period of <div className={(emptyperiod)?classes.tag:classes.filledtag}>{period}</div>  after the maturity date.
-        After that period the subscriber may open a dispute (see annex 5).
+        After that period the subscriber may open a dispute (see Annex 5).
       </Typography>
       <Typography paragraph>
         Signatures:

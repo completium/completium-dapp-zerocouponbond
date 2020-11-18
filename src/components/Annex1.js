@@ -75,7 +75,7 @@ const Annex1 = () => {
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
               {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===5 || i===7)?'#7a7aeacf':'#f6f8fa' }}>
+                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===5 || i===7)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
@@ -101,7 +101,7 @@ const Annex1 = () => {
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
               {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===9 || i===10)?'#7a7aeacf':'#f6f8fa' }}>
+                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===9 || i===10)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
@@ -124,7 +124,7 @@ const Annex1 = () => {
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
               {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===3)?'#7a7aeacf':'#f6f8fa' }}>
+                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===3)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
