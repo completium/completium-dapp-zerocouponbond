@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useZCBStateContext } from '../ZCBState';
 import Chip from '@material-ui/core/Chip';
 import CreateIcon from '@material-ui/icons/Create';
+import Annex1 from './Annex1';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
 
 const useStyles = makeStyles((theme) => ({
   tag: {
@@ -34,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ContractPaper = (props) => {
+const MainPaper = (props) => {
   const classes = useStyles();
   const  { zcbState } = useZCBStateContext();
   const issuer = (zcbState.contractInfo.issuer === '')?'Issuer name':zcbState.contractInfo.issuer;
@@ -89,6 +92,22 @@ const ContractPaper = (props) => {
         return (<Chip label={e.signer} variant="outlined" color='primary' onClick={() => {}} style={{ marginRight: 20 }}></Chip>)
       }) }
     </Paper>);
+}
+
+const ContractPaper = (props) => {
+  return (
+    <Grid container direction row>
+      <Grid item>
+        <MainPaper></MainPaper>
+      </Grid>
+      <Grid item>
+        <Toolbar></Toolbar>
+      </Grid>
+      <Grid item>
+        <Annex1></Annex1>
+      </Grid>
+    </Grid>
+  )
 }
 
 export default ContractPaper;
