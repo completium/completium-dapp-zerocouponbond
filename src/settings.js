@@ -1,5 +1,5 @@
 export const appTitle = "Issue a financial contract!"
 
-export const network = "delphinet"
+export const network = "carthagenet"
 
 export const appName = "BondCorp."

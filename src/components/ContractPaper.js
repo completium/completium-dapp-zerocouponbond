@@ -9,6 +9,7 @@ import Annex from './Annex';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
+import { network } from '../settings';
 
 const useStyles = makeStyles((theme) => ({
   tag: {
@@ -86,14 +87,18 @@ const MainPaper = (props) => {
       <Typography paragraph align='justify'>
         After that period the subscriber may open a dispute (see <Link component="button" onClick={() => props.annex5Ref.current.scrollIntoView()} color="inherit">Annex 5</Link>).
       </Typography>
-      <Typography paragraph align='justify'>
+      {/* <Typography paragraph align='justify'>
         The issuer may transfer the bond to a third party, without the need for the subscriber to be notified nor give his authorization (see <Link component="button" onClick={() => props.annex6Ref.current.scrollIntoView()} color="inherit">Annex 6</Link>).
-      </Typography>
+      </Typography> */}
       <Typography paragraph>
         Signatures:
       </Typography>
       { zcbState.timeline.filter(e => e.type === 'signature').map(e => {
-        return (<Chip label={e.signer} variant="outlined" color='primary' onClick={() => {}} style={{ marginRight: 20 }}></Chip>)
+        return (
+          <a style={{ textDecoration: 'none' }} href={"https://better-call.dev/"+network+"/opg/"+e.ophash+"/contents"} target="_blank">
+            <Chip label={e.signer} variant="outlined" color='primary' onClick={() => {}} style={{ marginRight: 20 }} />
+          </a>
+        )
       }) }
       <div ref={props.annex1Ref}></div>
     </Paper>);

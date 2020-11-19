@@ -18,6 +18,9 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent   from '@material-ui/lab/TimelineContent';
 import TimelineDot       from '@material-ui/lab/TimelineDot';
 import { Typography } from '@material-ui/core';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+
+import { network } from '../settings';
 
 const useStyles = makeStyles((theme) => ({
   textfield: {
@@ -62,7 +65,13 @@ const ContractSideBar = (props) => {
         </TimelineSeparator>
         <TimelineContent style={{ flex: 200 }}>
           <Typography color='textSecondary'>{element.date}</Typography>
-          <Typography>{element.label}</Typography>
+          {(element.ophash !== undefined)?(
+            <a style={{ textDecoration: 'none' }} href={"https://better-call.dev/"+network+"/opg/"+element.ophash+"/contents"} target="_blank">
+              <Typography style={{ color: 'black' }}>{element.label} <OpenInNewIcon style={{ position: 'relative', top: '4px'}}fontSize='small'/></Typography>
+            </a>
+          ) : (
+            <Typography>{element.label}</Typography>
+          )}
         </TimelineContent>
       </TimelineItem>);
     });

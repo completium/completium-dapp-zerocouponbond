@@ -21,7 +21,15 @@ import Button from '@material-ui/core/Button';
 import { useZCBStateContext } from '../ZCBState';
 
 import Chip from '@material-ui/core/Chip';
-import CheckIcon from '@material-ui/icons/Check';
+
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import ShareIcon from '@material-ui/icons/Share';
+
+import { ZCBContractCode, getStorage } from '../contract';
+
+import { useTezos, useReady } from '../dapp';
+
+import { network } from '../settings';
 
 const options = {year: "numeric", month: "numeric", day: "numeric",
 hour: "numeric", minute: "numeric", second: "numeric",
@@ -29,9 +37,28 @@ hour12: false};
 
 const EditorBar = (props) => {
   const { zcbState, isReady, setContractAddress, addTimeline } = useZCBStateContext();
+  const tezos = useTezos();
+  const ready = useReady();
   const handleClick = () => {
-    setContractAddress("KT1LN4LPSqTMS7Sd2CJw4bbDGRkMv2t68Fy9");
-    addTimeline({ date:new Intl.DateTimeFormat('en-GB',options).format(Date.now()), label:'Issued' })
+    tezos.wallet.originate({
+      code: ZCBContractCode,
+      init: getStorage(
+        zcbState.contractInfo.issueraccount,
+        zcbState.contractInfo.subscriberaccount,
+        (parseInt(zcbState.contractInfo.faceprice)*1000000).toString(),
+        zcbState.contractInfo.discount,
+        "100",
+        (parseInt(zcbState.contractInfo.duration)*60).toString(),
+        (parseInt(zcbState.contractInfo.period)*60).toString())
+    }).send().then(op => {
+      console.log(`Waiting for confirmation of origination...`);
+      props.openSnack();
+      return op.contract()
+    }).then (contract => {
+      props.closeSnack();
+      setContractAddress(contract.address);
+      console.log(`Origination completed for ${contract.address}.`);
+    }).catch(error => console.log(`Error: ${JSON.stringify(error, null, 2)}`));
   }
   return (
     (zcbState.contractAddress === '')? (
@@ -55,7 +82,7 @@ const EditorBar = (props) => {
         <Grid item><ImageIcon color='disabled'/></Grid>
         <Grid item><Divider orientation="vertical" flexItem style={{ height: '64px' }}/></Grid>
         <Grid item>
-          <Button disabled={!isReady()} variant='contained' color='primary' disableElevation onClick={handleClick}>issue contract</Button>
+          <Button disabled={!isReady() || !ready} variant='contained' color='primary' disableElevation onClick={handleClick}>issue contract</Button>
         </Grid>
       </Grid>
     ) : (
@@ -68,8 +95,13 @@ const EditorBar = (props) => {
           <Typography>Contract is active at address</Typography>
         </Grid>
         <Grid item>
-          <Chip label={zcbState.contractAddress} variant="outlined" color='primary' onClick={() => {}}/>
+          <a style={{ textDecoration: 'none' }} href={"https://better-call.dev/"+network+"/"+zcbState.contractAddress+"/operations"} target="_blank">
+            <Chip label={zcbState.contractAddress} variant="outlined" color='primary' onClick={() => {}}/>
+          </a>
         </Grid>
+        <Grid item><Divider orientation="vertical" flexItem style={{ height: '64px' }}/></Grid>
+        <Grid item><ShareIcon/></Grid>
+        <Grid item><PictureAsPdfIcon/></Grid>
         <Grid item><Divider orientation="vertical" flexItem style={{ height: '64px' }}/></Grid>
       </Grid>
     )

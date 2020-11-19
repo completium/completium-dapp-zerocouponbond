@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = archetype
 archetype.displayName = 'archetype'
 archetype.aliases = ['arl']

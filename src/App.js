@@ -1,42 +1,29 @@
 import './App.css';
 import React from 'react';
 import HeaderBar from './components/HeaderBar';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import SnackMsg from './components/SnackMsg';
-import Footer from './components/Footer';
-import Container from '@material-ui/core/Container';
-import { ZCBProvider, useZCBStateContext } from './ZCBState';
-import { DAppProvider, useAccountPkh, useConnect, useReady, useWallet } from './dapp.js';
 import { appTitle, appName, network } from './settings';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import ContractPaper from './components/ContractPaper';
 import EditorBar from './components/EditorBar';
 import ContractSideBar from './components/ContractSidebar';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { DAppProvider, useConnect } from './dapp.js';
+import { ZCBProvider, useZCBStateContext } from './ZCBState';
+import { useIndexer } from './indexer';
 
 function App() {
   return (
    <DAppProvider appName={appName}>
       <ZCBProvider>
         <React.Suspense fallback={null}>
-          <Router>
             <PageRouter />
-          </Router>
         </React.Suspense>
       </ZCBProvider>
     </DAppProvider>
@@ -66,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
 
 function PageRouter() {
   const classes = useStyles();
-  const ready = useReady();
-  const wallet = useWallet();
   var prefersDarkMode = false;
   const connect = useConnect();
+  const [open, setOpen] = React.useState(false);
+  const { zcbState } = useZCBStateContext();
   const theme = React.useMemo(
     () =>
       createMuiTheme(),
@@ -84,17 +71,20 @@ function PageRouter() {
   }, [connect]);
   const margin = drawerWidth+'px';
   console.log(`margin: ${margin}`);
+  const openSnack = () => { setOpen(true); };
+  const closeSnack = () => { setOpen(false); };
+  useIndexer(zcbState.contractAddress);
   return (
     <div className={classes.root}>
       <CssBaseline />
       <HeaderBar appTitle={appTitle} handleConnect={handleConnect} theme={theme}></HeaderBar>
       <main className={classes.content}>
         <Toolbar />
-        <Grid container stlye={{ padding: 0 }} justify="center" alignItems="center">
+        <Grid container style={{ padding: 0 }} justify="center" alignItems="center">
           <Grid item xs={12}>
-            <Toolbar style={{ position: 'fixed', width: '100%', padding: 0, height: '65px' }}>
+            <Toolbar style={{ position: 'fixed', width: '100%', padding: 0, height: '65px', zIndex: 1000 }}>
               <Paper style={{ width: '100%', height: '65px' }} square variant='outlined' elevation={0}>
-                <EditorBar></EditorBar>
+                <EditorBar openSnack={openSnack} closeSnack={closeSnack}></EditorBar>
               </Paper>
             </Toolbar>
           </Grid>
@@ -109,6 +99,7 @@ function PageRouter() {
             <Toolbar></Toolbar>
         </Grid>
       </main>
+      <SnackMsg open={open} theme={theme}></SnackMsg>
       <Drawer
         className={classes.drawer}
         variant="permanent"

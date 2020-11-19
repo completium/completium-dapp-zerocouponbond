@@ -10,7 +10,7 @@ const SnackMsg = (props) => {
     return (
       <Snackbar open={props.open} >
         <Alert severity="info" style={{
-            backgroundColor: props.theme.palette.secondary.main
+            backgroundColor: props.theme.palette.primary.main
         }}>
           Waiting for operation confirmation ...
         </Alert>

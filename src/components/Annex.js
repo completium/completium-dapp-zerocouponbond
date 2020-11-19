@@ -101,7 +101,7 @@ const Annex = (props) => {
   ";
   return (
     <Paper square>
-      <Grid container direction='row'>
+      <Grid container direction='row' style={{ paddingBottom: '40px', }}>
         <Grid item xs={12} style={{ paddingTop: '40px', paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
           <div ref={props.annex2Ref}></div>
           <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 1</Typography>
@@ -240,6 +240,18 @@ const Annex = (props) => {
            </Pre>
           )}
         </Highlight>
+        </Grid>
+        <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+          <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 6</Typography>
+        </Grid>
+        <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+          <Typography>Links:</Typography>
+        </Grid>
+        <Grid item xs={12} style={{ paddingLeft:'80px', paddingRight: '60px', minWidth: '680px' }}>
+          <Typography>Smart contract's source code</Typography>
+        </Grid>
+        <Grid item xs={12} style={{ paddingLeft:'80px', paddingRight: '60px', minWidth: '680px' }}>
+          <Typography>Archetype language documentation</Typography>
         </Grid>
       </Grid>
     </Paper>
