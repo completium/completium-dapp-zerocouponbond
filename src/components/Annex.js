@@ -6,6 +6,12 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from 'prism-react-renderer/themes/github';
 /* import dracula from 'prism-react-renderer/themes/vsDark';
  */import styled from "styled-components";
+import Prism from 'prism-react-renderer/prism';
+import archetype from '../archetype';
+
+/* Object.setPrototypeOf(refractor, Prism);
+refractor.register(typescriptLang); */
+archetype(Prism);
 
 const Pre = styled.pre`
   text-align: left;
@@ -15,7 +21,7 @@ const Pre = styled.pre`
 `;
 
 const Line = styled.div`
-  display: table-row;
+  display: flow-root;
 `;
 
 const LineNo = styled.span`
@@ -24,21 +30,23 @@ const LineNo = styled.span`
   padding-right: 1em;
   user-select: none;
   opacity: 1;
+  padding-left: 48px;
 `;
 
 const LineContent = styled.span`
   display: table-cell;
-  font-size: 13px;
+  font-size: 15px;
 `;
 
-const Annex = () => {
+const Annex = (props) => {
   const SignCode = "entry sign () { \n\
     if caller = issuer then \n\
       issuersigned := true \n\
     else if caller = subscriber then begin \n\
       subscribersigned := true; \n\
       var presentvalue = discount * facevalue; \n\
-      dorequire(transferred >= presentvalue, \"SUBSCRIBER_INVALID_TRANSFER\"); \n\
+      dorequire(transferred >= presentvalue, \n\
+               \"SUBSCRIBER_INVALID_TRANSFER\"); \n\
       transfer presentvalue to issuer; \n\
     end \
     else fail(\"CALLER_NOT_A_SIGNER\"); \n\
@@ -95,6 +103,7 @@ const Annex = () => {
     <Paper square>
       <Grid container direction='row'>
         <Grid item xs={12} style={{ paddingTop: '40px', paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+          <div ref={props.annex2Ref}></div>
           <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 1</Typography>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
@@ -103,6 +112,7 @@ const Annex = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+          <div ref={props.annex3Ref}></div>
           <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 2</Typography>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
@@ -111,11 +121,11 @@ const Annex = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-        <Highlight {...defaultProps} theme={dracula} code={SignCode} language="javascript">
+        <Highlight Prism={Prism} {...defaultProps} theme={dracula} code={SignCode} language='archetype'>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
+            <Pre className={className} style={{ ...style, paddingLeft: 0, paddingRight: 0}}>
               {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===5 || i===7)?'#3f51b52e':'#f6f8fa' }}>
+                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===5 || i===8)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
@@ -129,6 +139,7 @@ const Annex = () => {
         </Highlight>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+        <div ref={props.annex4Ref}></div>
           <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 3</Typography>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
@@ -137,11 +148,11 @@ const Annex = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-        <Highlight {...defaultProps} theme={dracula} code={SignCode} language="javascript">
+        <Highlight Prism={Prism} {...defaultProps} theme={dracula} code={SignCode} language="archetype">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
+            <Pre className={className} style={{ ...style, paddingLeft: 0, paddingRight: 0}}>
               {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===9 || i===10)?'#3f51b52e':'#f6f8fa' }}>
+                <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===10 || i===11)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
@@ -160,9 +171,9 @@ const Annex = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-        <Highlight {...defaultProps} theme={dracula} code={toSignedCode} language="javascript">
+        <Highlight Prism={Prism} {...defaultProps} theme={dracula} code={toSignedCode} language="archetype">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
+            <Pre className={className} style={{ ...style, paddingLeft: 0, paddingRight: 0}}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===3)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
@@ -178,6 +189,7 @@ const Annex = () => {
         </Highlight>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
+        <div ref={props.annex5Ref}></div>
           <Typography variant='h6' style={{ fontWeight: 'bold' }}>Annex 4</Typography>
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
@@ -186,9 +198,9 @@ const Annex = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-        <Highlight {...defaultProps} theme={dracula} code={terminateCode} language="javascript">
+        <Highlight Prism={Prism} {...defaultProps} theme={dracula} code={terminateCode} language="archetype">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
+            <Pre className={className} style={{ ...style, paddingLeft: 0, paddingRight: 0}}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===5 || i===6 || i === 11)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>
@@ -208,13 +220,13 @@ const Annex = () => {
         </Grid>
         <Grid item xs={12} style={{ paddingLeft:'70px', paddingRight: '60px', minWidth: '680px' }}>
           <Typography paragraph>
-            Subscriber may open a dispute (see line 3 below) when the contract is still in <span style={{ fontFamily: 'Courier Prime, monospace' }}>Signed</span> state after payback period (see line 6 below).
+            Subscriber may open a dispute (see line 3 below) if the contract is still in <span style={{ fontFamily: 'Courier Prime, monospace' }}>Signed</span> state after payback period (see line 6 below).
           </Typography>
         </Grid>
         <Grid item xs={12}>
-        <Highlight {...defaultProps} theme={dracula} code={disputeCode} language="javascript">
+        <Highlight Prism={Prism} {...defaultProps} theme={dracula} code={disputeCode} language="archetype">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={{ ...style, paddingLeft: '35px'}}>
+            <Pre className={className} style={{ ...style, paddingLeft: 0, paddingRight: 0}}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })} style={{ backgroundColor: (i===2 || i===5)?'#3f51b52e':'#f6f8fa' }}>
                   <LineNo>{i + 1}</LineNo>

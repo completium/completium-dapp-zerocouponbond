@@ -1,3 +1,4 @@
+import { React, useRef } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +8,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import Annex from './Annex';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   tag: {
@@ -69,23 +71,23 @@ const MainPaper = (props) => {
         The <span className={classes.keyword}>face value</span> of the bond is set to <div className={(emptyfacevalue)?classes.tag:classes.filledtag}>{facevalue}</div>.
       </Typography>
       <Typography paragraph align='justify'>
-        The <span className={classes.keyword}>present value</span> of the bond is computed by applying a discount rate of <div className={(emptydiscount)?classes.tag:classes.filledtag}>{discount}</div> to the face value (see Annex 1).
+        The <span className={classes.keyword}>present value</span> of the bond is computed by applying a discount rate of <div className={(emptydiscount)?classes.tag:classes.filledtag}>{discount}</div> to the face value (see <Link component="button" onClick={() => props.annex1Ref.current.scrollIntoView()} color="inherit">Annex 1</Link>).
       </Typography>
       <Typography paragraph align='justify'>
-        The subscriber agrees to pay the issuer the present value of the bond to activate the bond (see Annex 2).
+        The subscriber agrees to pay the issuer the present value of the bond to activate the bond (see <Link component="button" onClick={() => props.annex2Ref.current.scrollIntoView()} color="inherit">Annex 2</Link>).
       </Typography>
       <Typography paragraph align='justify'>
-        The bond is signed when the issuer and the subscriber have signed the bond (see Annex 3).
+        The bond is signed when the issuer and the subscriber have signed the bond (see <Link component="button" onClick={() => props.annex3Ref.current.scrollIntoView()} color="inherit">Annex 3</Link>).
       </Typography>
       <Typography paragraph align='justify'>
         The <span className={classes.keyword}>maturity date</span> of this bond is set to <div className={(emptyduration)?classes.tag:classes.filledtag}>{duration}</div> after the date of signature by both parties.
-        The issuer agrees to pay the face value to the subscriber within a payback period of <div className={(emptyperiod)?classes.tag:classes.filledtag}>{period}</div>  after the maturity date (see Annex 4).
+        The issuer agrees to pay the face value to the subscriber within a payback period of <div className={(emptyperiod)?classes.tag:classes.filledtag}>{period}</div>  after the maturity date (see <Link component="button" onClick={() => props.annex4Ref.current.scrollIntoView()} color="inherit">Annex 4</Link>).
       </Typography>
       <Typography paragraph align='justify'>
-        After that period the subscriber may open a dispute (see Annex 5).
+        After that period the subscriber may open a dispute (see <Link component="button" onClick={() => props.annex5Ref.current.scrollIntoView()} color="inherit">Annex 5</Link>).
       </Typography>
       <Typography paragraph align='justify'>
-        The issuer may transfer the bond to a third party, without the need for the subscriber to be notified nor give his authorization (see Annex 6).
+        The issuer may transfer the bond to a third party, without the need for the subscriber to be notified nor give his authorization (see <Link component="button" onClick={() => props.annex6Ref.current.scrollIntoView()} color="inherit">Annex 6</Link>).
       </Typography>
       <Typography paragraph>
         Signatures:
@@ -93,20 +95,39 @@ const MainPaper = (props) => {
       { zcbState.timeline.filter(e => e.type === 'signature').map(e => {
         return (<Chip label={e.signer} variant="outlined" color='primary' onClick={() => {}} style={{ marginRight: 20 }}></Chip>)
       }) }
+      <div ref={props.annex1Ref}></div>
     </Paper>);
 }
 
 const ContractPaper = (props) => {
+  const annex1Ref = useRef(null);
+  const annex2Ref = useRef(null);
+  const annex3Ref = useRef(null);
+  const annex4Ref = useRef(null);
+  const annex5Ref = useRef(null);
+  const annex6Ref = useRef(null);
   return (
     <Grid container direction row>
       <Grid item>
-        <MainPaper></MainPaper>
+        <MainPaper
+          annex1Ref={annex1Ref}
+          annex2Ref={annex2Ref}
+          annex3Ref={annex3Ref}
+          annex4Ref={annex4Ref}
+          annex5Ref={annex5Ref}
+          annex6Ref={annex6Ref}></MainPaper>
       </Grid>
       <Grid item>
         <Toolbar></Toolbar>
       </Grid>
       <Grid item>
-        <Annex></Annex>
+        <Annex
+          annex1Ref={annex1Ref}
+          annex2Ref={annex2Ref}
+          annex3Ref={annex3Ref}
+          annex4Ref={annex4Ref}
+          annex5Ref={annex5Ref}
+          annex6Ref={annex6Ref}></Annex>
       </Grid>
     </Grid>
   )

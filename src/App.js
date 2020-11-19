@@ -27,13 +27,16 @@ import Button from '@material-ui/core/Button';
 import ContractPaper from './components/ContractPaper';
 import EditorBar from './components/EditorBar';
 import ContractSideBar from './components/ContractSidebar';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
    <DAppProvider appName={appName}>
       <ZCBProvider>
         <React.Suspense fallback={null}>
-          <PageRouter />
+          <Router>
+            <PageRouter />
+          </Router>
         </React.Suspense>
       </ZCBProvider>
     </DAppProvider>
