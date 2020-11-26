@@ -1,6 +1,6 @@
 Zero-coupon bond
 =================
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/edukera/zerocouponbond)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/edukera/completium-dapp-zerocouponbond)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
