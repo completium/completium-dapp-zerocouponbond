@@ -1,6 +1,10 @@
 import React from 'react';
 import constate from 'constate';
 import { ThanosWallet } from '@thanos-wallet/dapp';
+import { LedgerSigner } from '@taquito/ledger-signer';
+import TransportU2F from "@ledgerhq/hw-transport-u2f";
+import { TezosToolkit } from "@taquito/taquito";
+
 
 export const [
   DAppProvider,
@@ -40,19 +44,27 @@ function useDApp({ appName }) {
   const connect = React.useCallback(
     async (network, opts) => {
       try {
-        if (!wallet) {
-          throw new Error('Thanos Wallet not available');
-        }
-        await wallet.connect(network, opts);
-        const tzs = wallet.toTezos();
-        const pkh = await tzs.wallet.pkh();
+        const tezos = new TezosToolkit("https://delphinet-tezos.giganode.io");
+
+        const transport = await TransportU2F.create();
+        const ledgerSigner = new LedgerSigner(transport);
+        tezos.setProvider({ signer: ledgerSigner });
+        //Get the public key and the public key hash from the Ledger
+        const publicKey = await tezos.signer.publicKey();
+        const publicKeyHash = await tezos.signer.publicKeyHash();
+
+
+        console.log(publicKeyHash);
+        // tezos.setProvider({ wallet: this });
+        // const tzs = wallet.toTezos();
+        // const pkh = await tzs.wallet.pkh();
         setState({
-          wallet,
-          tezos: tzs,
-          accountPkh: pkh,
+          wallet: null,
+          tezos: tezos,
+          accountPkh: publicKeyHash,
         });
       } catch (err) {
-        alert(`Failed to connect ThanosWallet: ${err.message}`);
+        alert(`Failed to connect Ledger: ${err.message}`);
       }
     },
     [setState, wallet]
