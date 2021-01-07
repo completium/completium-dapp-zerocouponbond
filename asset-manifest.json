@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/completium-dapp-zerocouponbond/static/css/main.9c72e34c.chunk.css",
-    "main.js": "/completium-dapp-zerocouponbond/static/js/main.a20d11d8.chunk.js",
-    "main.js.map": "/completium-dapp-zerocouponbond/static/js/main.a20d11d8.chunk.js.map",
-    "runtime-main.js": "/completium-dapp-zerocouponbond/static/js/runtime-main.2ee8a8d2.js",
-    "runtime-main.js.map": "/completium-dapp-zerocouponbond/static/js/runtime-main.2ee8a8d2.js.map",
-    "static/js/2.2d8a4f7d.chunk.js": "/completium-dapp-zerocouponbond/static/js/2.2d8a4f7d.chunk.js",
-    "static/js/2.2d8a4f7d.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/2.2d8a4f7d.chunk.js.map",
-    "static/js/3.817473de.chunk.js": "/completium-dapp-zerocouponbond/static/js/3.817473de.chunk.js",
-    "static/js/3.817473de.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/3.817473de.chunk.js.map",
+    "main.js": "/completium-dapp-zerocouponbond/static/js/main.a80f2611.chunk.js",
+    "main.js.map": "/completium-dapp-zerocouponbond/static/js/main.a80f2611.chunk.js.map",
+    "runtime-main.js": "/completium-dapp-zerocouponbond/static/js/runtime-main.5d55c73b.js",
+    "runtime-main.js.map": "/completium-dapp-zerocouponbond/static/js/runtime-main.5d55c73b.js.map",
+    "static/js/2.e0890e79.chunk.js": "/completium-dapp-zerocouponbond/static/js/2.e0890e79.chunk.js",
+    "static/js/2.e0890e79.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/2.e0890e79.chunk.js.map",
+    "static/js/3.0d69cc67.chunk.js": "/completium-dapp-zerocouponbond/static/js/3.0d69cc67.chunk.js",
+    "static/js/3.0d69cc67.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/3.0d69cc67.chunk.js.map",
     "index.html": "/completium-dapp-zerocouponbond/index.html",
     "static/css/main.9c72e34c.chunk.css.map": "/completium-dapp-zerocouponbond/static/css/main.9c72e34c.chunk.css.map",
-    "static/js/2.2d8a4f7d.chunk.js.LICENSE.txt": "/completium-dapp-zerocouponbond/static/js/2.2d8a4f7d.chunk.js.LICENSE.txt"
+    "static/js/2.e0890e79.chunk.js.LICENSE.txt": "/completium-dapp-zerocouponbond/static/js/2.e0890e79.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2ee8a8d2.js",
-    "static/js/2.2d8a4f7d.chunk.js",
+    "static/js/runtime-main.5d55c73b.js",
+    "static/js/2.e0890e79.chunk.js",
     "static/css/main.9c72e34c.chunk.css",
-    "static/js/main.a20d11d8.chunk.js"
+    "static/js/main.a80f2611.chunk.js"
   ]
 }
