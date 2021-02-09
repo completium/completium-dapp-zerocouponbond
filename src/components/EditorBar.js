@@ -40,25 +40,11 @@ const EditorBar = (props) => {
   const tezos = useTezos();
   const ready = useReady();
   const handleClick = () => {
-    tezos.wallet.originate({
-      code: ZCBContractCode,
-      init: getStorage(
-        zcbState.contractInfo.issueraccount,
-        zcbState.contractInfo.subscriberaccount,
-        (parseInt(zcbState.contractInfo.faceprice)*1000000).toString(),
-        zcbState.contractInfo.discount,
-        "100",
-        (parseInt(zcbState.contractInfo.duration)*60).toString(),
-        (parseInt(zcbState.contractInfo.period)*60).toString())
-    }).send().then(op => {
-      console.log(`Waiting for confirmation of origination...`);
-      props.openSnack();
-      return op.contract()
-    }).then (contract => {
-      props.closeSnack();
-      setContractAddress(contract.address);
-      console.log(`Origination completed for ${contract.address}.`);
-    }).catch(error => console.log(`Error: ${JSON.stringify(error, null, 2)}`));
+    ///////////////////////////////////////////////////////////////////////////
+    // FIX ME
+    // Origination 'contract'
+    ///////////////////////////////////////////////////////////////////////////
+
   }
   return (
     (zcbState.contractAddress === '')? (
