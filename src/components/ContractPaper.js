@@ -9,7 +9,7 @@ import Annex from './Annex';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
-import { network } from '../settings';
+import { bcdUrl } from '../settings';
 
 const useStyles = makeStyles((theme) => ({
   tag: {
@@ -95,7 +95,7 @@ const MainPaper = (props) => {
       </Typography>
       { zcbState.timeline.filter(e => e.type === 'signature').map(e => {
         return (
-          <a style={{ textDecoration: 'none' }} href={"https://better-call.dev/"+network+"/opg/"+e.ophash+"/contents"} target="_blank">
+          <a style={{ textDecoration: 'none' }} href={bcdUrl + "/opg/" + e.ophash + "/contents"} target="_blank">
             <Chip label={e.signer} variant="outlined" color='primary' onClick={() => {}} style={{ marginRight: 20 }} />
           </a>
         )

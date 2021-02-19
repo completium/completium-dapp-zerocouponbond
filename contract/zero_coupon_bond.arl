@@ -46,7 +46,7 @@ entry sign () {
 transition terminate () {
   called by issuer
   from Signed to Terminated when {
-    match_option signaturedate with
+    match signaturedate with
     | some(d) ->
       d + maturityduration <=  now <= d + maturityduration + paybackduration and
       transferred >= facevalue
@@ -60,7 +60,7 @@ transition terminate () {
 transition dispute () {
   called by subscriber
   from Signed to Disputed when {
-    match_option signaturedate with
+    match signaturedate with
     | some(d) ->
       d + maturityduration + paybackduration <=  now
     | none -> false
