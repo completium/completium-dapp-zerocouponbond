@@ -25,7 +25,7 @@ import Chip from '@material-ui/core/Chip';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import ShareIcon from '@material-ui/icons/Share';
 
-import { ZCBContractCode, getStorage } from '../contract';
+import { code, getStorage, mk_int, mk_string, mk_rational } from '../contract';
 
 import { useTezos, useReady } from '../dapp';
 
@@ -41,16 +41,14 @@ const EditorBar = (props) => {
   const ready = useReady();
   const handleClick = () => {
     tezos.wallet.originate({
-      code: ZCBContractCode,
+      code: code,
       init: getStorage(
-        zcbState.contractInfo.issueraccount,
-        zcbState.contractInfo.subscriberaccount,
-        (parseInt(zcbState.contractInfo.faceprice)*1000000).toString(),
-        zcbState.contractInfo.discount,
-        "100",
-        (parseInt(zcbState.contractInfo.duration)*60).toString(),
-        (parseInt(zcbState.contractInfo.period)*60).toString())
-    }).send().then(op => {
+        mk_string (zcbState.contractInfo.issueraccount),
+        mk_string (zcbState.contractInfo.subscriberaccount),
+        mk_int (zcbState.contractInfo.faceprice * 1000000),
+        mk_rational (parseInt(zcbState.contractInfo.discount), 100),
+        mk_int (zcbState.contractInfo.duration * 60),
+        mk_int (zcbState.contractInfo.period * 60))}).send().then(op => {
       console.log(`Waiting for confirmation of origination...`);
       props.openSnack();
       return op.contract()
