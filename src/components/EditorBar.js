@@ -43,12 +43,16 @@ const EditorBar = (props) => {
     tezos.wallet.originate({
       code: code,
       init: getStorage(
-        mk_string (zcbState.contractInfo.issueraccount),
-        mk_string (zcbState.contractInfo.subscriberaccount),
-        mk_int (zcbState.contractInfo.faceprice * 1000000),
-        mk_rational (parseInt(zcbState.contractInfo.discount), 100),
-        mk_int (zcbState.contractInfo.duration * 60),
-        mk_int (zcbState.contractInfo.period * 60))}).send().then(op => {
+        zcbState.contractInfo.issueraccount,                         // issuer           : role,
+        zcbState.contractInfo.subscriberaccount,                     // subscriber       : role,
+        zcbState.contractInfo.faceprice * 1000000,                   // facevalue        : tez,
+        mk_rational (parseInt(zcbState.contractInfo.discount), 100), // discount         : rational,
+        zcbState.contractInfo.duration * 60,                         // maturityduration : duration,
+        zcbState.contractInfo.period * 60,                           // paybackduration  : duration,
+        false,                                                       // issuersigned     : bool,
+        false                                                        // subscribersigned : bool
+        )},
+        ).send().then(op => {
       console.log(`Waiting for confirmation of origination...`);
       props.openSnack();
       return op.contract()

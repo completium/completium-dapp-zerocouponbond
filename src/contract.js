@@ -1146,31 +1146,31 @@ export const code =
      ]
   }  ];
 
-export const getStorage = (issuer, subscriber, facevalue, discount, maturityduration, paybackduration) => {
+export const getStorage = (issuer, subscriber, facevalue, discount, maturityduration, paybackduration, issuersigned, subscribersigned) => {
   return {  "prim": "Pair",
             "args": [
-              issuer,
+              {  "string": issuer  },
               {  "prim": "Pair",
                  "args": [
-                   subscriber,
+                   {  "string": subscriber  },
                    {  "prim": "Pair",
                       "args": [
-                        facevalue,
+                        {"int": facevalue.toString()},
                         {  "prim": "Pair",
                            "args": [
                              discount,
                              {  "prim": "Pair",
                                 "args": [
-                                  maturityduration,
+                                  {"int": maturityduration.toString()},
                                   {  "prim": "Pair",
                                      "args": [
-                                       paybackduration,
+                                       {"int": paybackduration.toString()},
                                        {  "prim": "Pair",
                                           "args": [
-                                            {  "prim": "False"  },
+                                            (issuersigned ? {  "prim": "True"  } : {  "prim": "False"  }),
                                             {  "prim": "Pair",
                                                "args": [
-                                                 {  "prim": "False"  },
+                                                 (subscribersigned ? {  "prim": "True"  } : {  "prim": "False"  }),
                                                  {  "prim": "Pair",
                                                     "args": [
                                                       {  "prim": "None"  },

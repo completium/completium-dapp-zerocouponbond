@@ -4,23 +4,11 @@ archetype zero_coupon_bond (
   facevalue : tez,
   discount : rational,
   maturityduration : duration,
-  paybackduration  : duration
+  paybackduration  : duration,
+  issuersigned : bool,
+  subscribersigned : bool
 )
 
-// variable issuer     : role = @tz1bfVgcJC4ukaQSHUe1EbrUd5SekXeP9CWk
-
-// variable subscriber : role = @tz1MZrh8CvYkp7BfLQMcm6mg5FvL5HRZfACw
-
-// variable facevalue : tez = 10tz
-
-// variable discount : rational = 14%
-
-// variable maturityduration : duration = 1m
-
-// variable paybackduration  : duration = 1m
-
-variable issuersigned     : bool = false
-variable subscribersigned : bool = false
 variable signaturedate    : option<date> = none
 
 states =
