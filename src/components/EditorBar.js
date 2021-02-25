@@ -25,11 +25,11 @@ import Chip from '@material-ui/core/Chip';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import ShareIcon from '@material-ui/icons/Share';
 
-import { ZCBContractCode, getStorage } from '../contract';
+import { code, getStorage, mk_int, mk_string, mk_rational } from '../contract';
 
 import { useTezos, useReady } from '../dapp';
 
-import { network } from '../settings';
+import { network, bcdUrl } from '../settings';
 
 const options = {year: "numeric", month: "numeric", day: "numeric",
 hour: "numeric", minute: "numeric", second: "numeric",
@@ -81,7 +81,7 @@ const EditorBar = (props) => {
           <Typography>Contract is active at address</Typography>
         </Grid>
         <Grid item>
-          <a style={{ textDecoration: 'none' }} href={"https://better-call.dev/"+network+"/"+zcbState.contractAddress+"/operations"} target="_blank">
+          <a style={{ textDecoration: 'none' }} href={bcdUrl + "/" + zcbState.contractAddress + "/operations"} target="_blank">
             <Chip label={zcbState.contractAddress} variant="outlined" color='primary' onClick={() => {}}/>
           </a>
         </Grid>
