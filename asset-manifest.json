@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/completium-dapp-zerocouponbond/static/css/main.9c72e34c.chunk.css",
-    "main.js": "/completium-dapp-zerocouponbond/static/js/main.259800d9.chunk.js",
-    "main.js.map": "/completium-dapp-zerocouponbond/static/js/main.259800d9.chunk.js.map",
+    "main.js": "/completium-dapp-zerocouponbond/static/js/main.9db77d85.chunk.js",
+    "main.js.map": "/completium-dapp-zerocouponbond/static/js/main.9db77d85.chunk.js.map",
     "runtime-main.js": "/completium-dapp-zerocouponbond/static/js/runtime-main.51bc61aa.js",
     "runtime-main.js.map": "/completium-dapp-zerocouponbond/static/js/runtime-main.51bc61aa.js.map",
-    "static/js/2.0329c1ef.chunk.js": "/completium-dapp-zerocouponbond/static/js/2.0329c1ef.chunk.js",
-    "static/js/2.0329c1ef.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/2.0329c1ef.chunk.js.map",
+    "static/js/2.491db269.chunk.js": "/completium-dapp-zerocouponbond/static/js/2.491db269.chunk.js",
+    "static/js/2.491db269.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/2.491db269.chunk.js.map",
     "static/js/3.935d9744.chunk.js": "/completium-dapp-zerocouponbond/static/js/3.935d9744.chunk.js",
     "static/js/3.935d9744.chunk.js.map": "/completium-dapp-zerocouponbond/static/js/3.935d9744.chunk.js.map",
     "index.html": "/completium-dapp-zerocouponbond/index.html",
     "static/css/main.9c72e34c.chunk.css.map": "/completium-dapp-zerocouponbond/static/css/main.9c72e34c.chunk.css.map",
-    "static/js/2.0329c1ef.chunk.js.LICENSE.txt": "/completium-dapp-zerocouponbond/static/js/2.0329c1ef.chunk.js.LICENSE.txt"
+    "static/js/2.491db269.chunk.js.LICENSE.txt": "/completium-dapp-zerocouponbond/static/js/2.491db269.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.51bc61aa.js",
-    "static/js/2.0329c1ef.chunk.js",
+    "static/js/2.491db269.chunk.js",
     "static/css/main.9c72e34c.chunk.css",
-    "static/js/main.259800d9.chunk.js"
+    "static/js/main.9db77d85.chunk.js"
   ]
 }
